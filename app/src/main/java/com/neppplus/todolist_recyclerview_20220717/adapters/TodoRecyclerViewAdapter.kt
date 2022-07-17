@@ -1,9 +1,13 @@
 package com.neppplus.todolist_recyclerview_20220717.adapters
 
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.neppplus.todolist_recyclerview_20220717.R
 import com.neppplus.todolistpractice_20220717.datas.TodoData
@@ -16,6 +20,21 @@ class TodoRecyclerViewAdapter (
     inner class MyViewHolder (view : View) : RecyclerView.ViewHolder(view) {
         fun bind(item : TodoData) {
 //            실제 데이터를 한칸 xml의 각 태그에 배치
+            val todoRatingBar = itemView.findViewById<RatingBar>(R.id.todoRatingBar)
+            val todoTxt = itemView.findViewById<TextView>(R.id.todoTitleTxt)
+            val finishedCb = itemView.findViewById<CheckBox>(R.id.finishedCb)
+
+            todoRatingBar.rating = item.rating.toFloat()
+            todoTxt.text = item.todoTitle
+            finishedCb.isChecked = item.isFinished
+
+//            체크 박스 체크되어있다면 > 완료되었기에 TextView에 취소선 긋기
+            if (item.isFinished) {
+                todoTxt.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                todoTxt.paintFlags = 0
+            }
+
         }
     }
 

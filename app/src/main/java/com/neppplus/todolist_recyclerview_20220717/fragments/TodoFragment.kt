@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.todolist_recyclerview_20220717.R
+import com.neppplus.todolist_recyclerview_20220717.adapters.TodoRecyclerViewAdapter
 import com.neppplus.todolistpractice_20220717.datas.TodoData
 import kotlinx.android.synthetic.main.fragment_todo.*
 
 class TodoFragment : Fragment() {
 
     val todoList = ArrayList<TodoData>()
-//    lateinit var mTodoListAdapter : TodoListAdapter
+    lateinit var mTodoListAdapter : TodoRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +33,9 @@ class TodoFragment : Fragment() {
         todoList.add( TodoData(3.0, "오늘 수업 수강하기", "neppPlus 학원", false) )
         todoList.add( TodoData(2.5, "오늘 수업 수강하기", "neppPlus 학원", false) )
 
-
+        mTodoListAdapter = TodoRecyclerViewAdapter(requireContext(), todoList)
+        todoRecyclerView.adapter = mTodoListAdapter
+        todoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 }
