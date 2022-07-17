@@ -6,13 +6,9 @@
     android:background="@color/warmGray_300"
     android:paddingHorizontal="20dp">
 
-    <ListView
-        android:id="@+id/todoListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todoRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="15dp"
-        android:divider="@color/warmGray_300"
-        android:dividerHeight="10dp"
-        android:scrollbarSize="0dp"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
