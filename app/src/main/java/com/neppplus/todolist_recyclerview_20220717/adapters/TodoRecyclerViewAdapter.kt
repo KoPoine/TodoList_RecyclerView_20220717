@@ -35,6 +35,15 @@ class TodoRecyclerViewAdapter (
                 todoTxt.paintFlags = 0
             }
 
+//            체크박스가 클릭되었을때 (체크 여부 변경 감지 이벤트) > TextView에 취소선 긋기
+            finishedCb.setOnCheckedChangeListener { compoundButton, isChecked ->
+                if (isChecked) {
+                    todoTxt.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                } else {
+                    todoTxt.paintFlags = 0
+                }
+            }
+
         }
     }
 
